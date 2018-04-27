@@ -1,0 +1,57 @@
+.table-input input {
+    width: 100%;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+.table > thead > tr > th {
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.table-input > tbody > tr > td {
+    padding: 0;
+}
+
+.table-input > tbody > tr > td.td-left {
+    text-align: left;
+    padding: 8px;
+}
+
+.table-header {
+    margin-bottom: 10px;
+}
+
+.table-header h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+.table-header .table-header-left input {
+    width: 150px;
+    border: none;
+    border-bottom: 1px solid #333;
+    outline: none;
+}
+
+.table-header .table-header-left {
+    float: left;
+}
+
+.table-header .table-header-right {
+    float: right;
+}
+
+.table-header .table-header-right input {
+    width: 100px;
+    border: none;
+    border-bottom: 1px solid #333;
+    outline: none;
+}
+
+.box-header select.form-control {
+    display: inline-block;
+    width: 200px;
+    margin-right: 20px;
+}
