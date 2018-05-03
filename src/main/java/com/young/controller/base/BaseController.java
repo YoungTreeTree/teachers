@@ -23,14 +23,11 @@ public class BaseController {
     protected Logger log = LoggerFactory.getLogger(getClass());
 
     protected static User user = new User();
-static {
-    user.setuType(2);
-    user.setuName("测试单位");
-    user.setuCodeQ("999");
-    user.setuCodeW("101");
-    user.setuCodeE("101");
-    user.setuType(2);
-}
+    static {
+        user.setuType(1);
+        user.setuName("测试教师");
+        user.setuCodeQ("9");
+    }
 
     /**
      * ThreadLocal确保高并发下每个请求的request，response都是独立的

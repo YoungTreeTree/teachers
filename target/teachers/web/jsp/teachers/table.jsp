@@ -37,7 +37,7 @@
                 <ul class="nav navbar-nav">
                     <li class="user user-menu">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="hidden-xs">${user.uCodeE} ${user.uCodeW} ${user.uCodeQ}</span>
+                            <span class="hidden-xs">${user.uV2Phone} ${user.uV2Name}</span>
                         </a>
                     </li>
                     <li class="user user-menu">

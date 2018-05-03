@@ -32,34 +32,36 @@
 <div class="login-box">
     <div class="login-logo">
         <p class="single-row" style="margin-left: -60px">《国家公派出国教师荣誉证书》</p>
-        <p class="single-row" style="margin-left: -35px">申请管理系统-无单位教师申请</p>
+        <p class="single-row" style="margin-left: -35px">申请管理系统-省厅教师申请</p>
     </div>
     <div class="login-box-body">
-        <form action="${pageContext.request.contextPath}/common/registerTe" method="post" enctype='multipart/form-data'  id="reguster2Form">
+        <form action="${pageContext.request.contextPath}/common/3/register" method="post" enctype='multipart/form-data'  id="regusterForm">
+            <input  id="q" name="q"  hidden="hidden" value="">
             <div class="form-group has-feedback">
-                <input id="" name="u2IdCode" type="number" class="form-control" placeholder="身份证号">
+                <p class="register-row-title">部属院校</p>
+                <select class="register-select" id="user">
+                    <c:forEach items="${users}" var="user"    varStatus="id">
+                        <option value="${user.uCodeQ}">${user.uName}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
+            <div class="form-group has-feedback">
+                <input id="" name="u1UName" type="text" class="form-control" placeholder="联系人姓名">
                 <%--<span class="glyphicon glyphicon-user form-control-feedback"></span>--%>
             </div>
             <div class="form-group has-feedback">
-                <input id="" name="u2Name" type="text" class="form-control" placeholder="姓名">
+                <input id="" name="u1Phone" type="number" class="form-control" placeholder="电话(登录使用 请牢记！)">
                 <%--<span class="glyphicon glyphicon-user form-control-feedback"></span>--%>
             </div>
             <div class="form-group has-feedback">
-                <input id="" name="u2Phone" type="number" class="form-control" placeholder="电话（登录使用 请牢记）">
-                <%--<span class="glyphicon glyphicon-user form-control-feedback"></span>--%>
-            </div>
-            <div class="form-group has-feedback">
-                <input id="" name="u2Mail" type="text" class="form-control" placeholder="邮箱">
-                <%--<span class="glyphicon glyphicon-user form-control-feedback"></span>--%>
-            </div>
-            <div class="form-group has-feedback">
-                <input id="" name="u2Address" type="text" class="form-control" placeholder="通信地址">
+                <input id="" name="u1Email" type="text" class="form-control" placeholder="邮箱">
                 <%--<span class="glyphicon glyphicon-user form-control-feedback"></span>--%>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
-                    <a href="#" class="btn btn-primary btn-block btn-flat" onclick="document.getElementById('reguster2Form').submit();">注册</a>
+                    <a href="#" class="btn btn-primary btn-block btn-flat" onclick="f();">申请</a>
                 </div>
             </div>
 
@@ -69,6 +71,10 @@
 <script src="${pageContext.request.contextPath}/web/plugin/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/web/plugin/bootstrap/dist/js/bootstrap.min.js"></script>
 <script>
+    function f() {
+        $("#q").val($("#user").val());
+        document.getElementById('regusterForm').submit();
+    }
     window.onload=function(){
         var msg = '${msg}' ;
         if (msg!=null&&msg!=''){

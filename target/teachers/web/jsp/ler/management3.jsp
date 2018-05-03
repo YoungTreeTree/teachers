@@ -51,21 +51,15 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
-                <li ><a href="${pageContext.request.contextPath}/r/management"><span>单位管理</span></a></li>
-                <li ><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list"><span>汇总统计</span></a></li>
-
-
-                <li ><a href="${pageContext.request.contextPath}/r/req2"><span>部署院校账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部署院校账号信息</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部署院校表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list2"><span>部署院校汇总统计</span></a></li>
-
-
-                <li ><a href="${pageContext.request.contextPath}/r/req3"><span>个体教师账号申请</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management"><span>省厅账号信息</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部属院校账号信息</span></a></li>
                 <li class="active"><a href="${pageContext.request.contextPath}/r/management3"><span>个体教师账号管理</span></a></li>
+
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>省厅表格管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部属院校表格管理</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management3"><span>个体教师表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list3"><span>个体教师汇总统计</span></a></li>
+
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-list"><span>汇总统计</span></a></li>
 
                 <li><a href="${pageContext.request.contextPath}/r/psd"><span>修改密码</span></a></li>
             </ul>
@@ -86,7 +80,7 @@
                                 <%--<a href="javascript:;" class="btn btn-default btn-file" onclick="document.getElementById('excel_upload').submit();">
                                     上传
                                 </a>--%>
-                                    <a href="${pageContext.request.contextPath}/r/users2" class="btn btn-default btn-file" >
+                                    <a href="${pageContext.request.contextPath}/r/4/users" class="btn btn-default btn-file" >
                                         导出通讯录
                                     </a>
                             </form>

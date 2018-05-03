@@ -24,13 +24,21 @@ public class TeachersController extends BaseController {
 
     private BaseJson queryJson = new BaseJson();
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("teachers/login");
+        return modelAndView;
+    }
+
+
     @RequestMapping(value = "/table", method = RequestMethod.GET)
     public ModelAndView table() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         User user = getUserSession();
 
         if (user.getuType()!=1){
-            modelAndView.setViewName("/common/login");
+            modelAndView.setViewName("/teacher/login");
             return modelAndView;
         }
         modelAndView.getModel().put("user",user);
@@ -45,7 +53,7 @@ public class TeachersController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         User user = getUserSession();
         if (user.getuType()!=1){
-            modelAndView.setViewName("/common/login");
+            modelAndView.setViewName("/teacher/login");
             return modelAndView;
         }
         modelAndView.getModel().put("user",user);
@@ -63,7 +71,7 @@ public class TeachersController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         User user = getUserSession();
         if (user.getuType()!=1){
-            modelAndView.setViewName("/common/login");
+            modelAndView.setViewName("/teacher/login");
             return modelAndView;
         }
         modelAndView.getModel().put("user",user);
@@ -88,7 +96,7 @@ public class TeachersController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         User user = getUserSession();
         if (user.getuType()!=1){
-            modelAndView.setViewName("/common/login");
+            modelAndView.setViewName("/teacher/login");
             return modelAndView;
         }
         modelAndView.getModel().put("user",user);
@@ -108,7 +116,7 @@ public class TeachersController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         User user = getUserSession();
         if (user.getuType()!=1){
-            modelAndView.setViewName("/common/login");
+            modelAndView.setViewName("/teacher/login");
             return modelAndView;
         }
         queryJson  = teacherService.up_table(p,user.getuId(),if_temp, year);
@@ -142,19 +150,22 @@ public class TeachersController extends BaseController {
         }
         User user =getUserSession();
         if (user.getuType()!=1){
-            modelAndView.setViewName("/common/login");
+            modelAndView.setViewName("/teacher/login");
             return modelAndView;
         }
         int flag = teacherService.change_pw2(old_pw,new_pw,user.getuId(),name,phone,mail);
         if (flag==1){
             modelAndView.getModel().put("msg","修改密码成功");
-            modelAndView.getModel().put("url","/common/login");
+            modelAndView.getModel().put("url","/teacher/login");
         }else if (flag==-2){
             modelAndView.getModel().put("msg","旧密码不正确");
             modelAndView.getModel().put("url","/teacher/psd");
         }
-        else if (flag==-3){
+        /*else if (flag==-3){
             modelAndView.getModel().put("msg","新旧密码不能相同");
+            modelAndView.getModel().put("url","/teacher/psd");
+        }*/else if (flag==-4){
+            modelAndView.getModel().put("msg","手机号重复");
             modelAndView.getModel().put("url","/teacher/psd");
         }else{
             modelAndView.getModel().put("msg","修改密码失败，请联系管理员修改密码");

@@ -36,7 +36,7 @@
                 <ul class="nav navbar-nav">
                     <li class="user user-menu">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="hidden-xs">${user.uCodeE} ${user.uCodeW} ${user.uCodeQ}</span>
+                            <span class="hidden-xs">${user.uV2Phone} ${user.uV2Name}</span>
                         </a>
                     </li>
                     <li class="user user-menu">
@@ -69,9 +69,7 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <form action="${pageContext.request.contextPath}/teacher/change_pw" method="post" id="change_pw">
-
-
+                            <form action="${pageContext.request.contextPath}/teacher/change_pw" method="post" id="change_pw" enctype='multipart/form-data'>
                                 <div class="form-group">
                                     <label >联系人姓名</label>
                                     <input id="name" name="name" type="text" class="form-control"   value="${user.uV2Name}">

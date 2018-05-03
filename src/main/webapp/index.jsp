@@ -11,7 +11,7 @@
 </head>
 <body>
 <%
-    pageContext.forward("/common/login");
+    pageContext.forward("/teacher/login");
 %>
 </body>
 </html>

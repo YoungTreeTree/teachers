@@ -21,7 +21,7 @@ public interface ICommService {
 	int reset_pw(long u_id);
 	TableCopy get_table_by_id(long t_id);
 	TableCopyCopy get_table_by_id2(long t_id);
-	User check_login(String code , String pw);
-	int register(User1 user1);
+	User check_login(String code , String pw,int type);
+	int register(User user,int type,String q);
 
 }

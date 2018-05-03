@@ -25,7 +25,7 @@ public class TeacherServiceImpl extends CommServiceImpl implements ITeacherServi
 
             if (tables.size()<=0){
                 TableCopy table = new TableCopy();
-                table =  change_table(table,p,1,u_id,year);
+                table =  change_table(table,p,if_temp,u_id,year);
                 baseDAO.save(table);
                 queryjson.setErrno("1");
                 queryjson.setErrmsg("成功保存");

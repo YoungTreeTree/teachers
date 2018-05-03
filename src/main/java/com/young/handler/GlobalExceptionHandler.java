@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotLoginException.class)
     public String NotLoginExceptionHandler(){
-        return "redirect:/common/login";
+        return "redirect:/teacher/login";
     }
 
     @ExceptionHandler({NumberFormatException.class,MissingServletRequestParameterException.class, TypeMismatchException.class})

@@ -182,12 +182,12 @@
                                             <c:if test="${table.tIfQOk==2}"> ${table.tQNoReason} </c:if>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <%--<tr>
                                         <td colspan="2">省、自治区、直辖市教育厅（委）意见</td>
                                         <td colspan="10">
                                             <c:if test="${table.tIfWOk==2}"> ${table.tWNoReason} </c:if>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td colspan="2">孔子学院总部/国家汉办审批意见</td>
                                         <td colspan="10">

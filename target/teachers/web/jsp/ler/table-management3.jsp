@@ -67,21 +67,14 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu" data-widget="tree">
-                <li ><a href="${pageContext.request.contextPath}/r/management"><span>单位管理</span></a></li>
-                <li ><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list"><span>汇总统计</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management"><span>省厅账号信息</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部属院校账号信息</span></a></li>
 
-
-                <li ><a href="${pageContext.request.contextPath}/r/req2"><span>部署院校账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部署院校账号信息</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部署院校表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list2"><span>部署院校汇总统计</span></a></li>
-
-
-                <li><a href="${pageContext.request.contextPath}/r/req3"><span>个体教师账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management3"><span>个体教师账号管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>省厅表格管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部属院校表格管理</span></a></li>
                 <li class="active"><a href="${pageContext.request.contextPath}/r/-1/-1/table-management3"><span>个体教师表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list3"><span>个体教师汇总统计</span></a></li>
+
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-list"><span>汇总统计</span></a></li>
 
                 <li><a href="${pageContext.request.contextPath}/r/psd"><span>修改密码</span></a></li>
             </ul>
@@ -108,11 +101,12 @@
                             <label class="control-label">账号：</label>
                             <select class="form-control" id="codes">
                                 <c:forEach items="${users}" var="user"    varStatus="id">
-                                    <option value="${user.u2Id}"> ${user.u2Name} </option>
+                                    <option value="${user.uId}"> ${user.uCodeQ} ${user.uName}</option>
                                 </c:forEach>
                                 <option value="-1">全部</option>
                             </select>
                             <a href="javascript:;" class="btn btn-primary pull-right" onclick="f()">搜索</a>
+                            <a href="javascript:;" class="btn btn-primary pull-right"  id="submit-all-id" style="margin-right: 20px">批量通过</a>
                         </div>
                         <div class="box-body">
                             <table class="table table-bordered">
@@ -123,27 +117,32 @@
                                     <th>账号</th>
                                     <th>状态</th>
                                     <th>操作</th>
+                                    <th>批量审核</th>
                                 </tr>
                                 <c:forEach items="${tables}" var="item"    varStatus="id">
                                     <tr>
-                                        <td>${item.tableCopyCopyCopy.tUserInputYear}</td>
-                                        <td>${item.user.uName} ${item.user.uV2Name}</td>
-                                        <td>te ${item.user.uV2Phone}</td>
+                                        <td>${item.tableCopy.tUserInputYear}</td>
+                                        <td>${item.user.uName}</td>
+                                        <td>${item.user.uV2Name}</td>
                                         <td>
-                                            <c:if test="${item.tableCopyCopyCopy.tIfEOk==1}"> -- </c:if>
-                                            <c:if test="${item.tableCopyCopyCopy.tIfEOk==2}"> 通过 </c:if>
-                                            <c:if test="${item.tableCopyCopyCopy.tIfEOk==3}"> 被驳回 </c:if></td>
+                                            <c:if test="${item.tableCopy.tIfEOk==1}"> -- </c:if>
+                                            <c:if test="${item.tableCopy.tIfEOk==2}"> 通过 </c:if>
+                                            <c:if test="${item.tableCopy.tIfEOk==3}"> 被驳回 </c:if></td>
                                         <td>
-                                            <a href="${pageContext.request.contextPath}/common/${item.tableCopyCopyCopy.tId}/statics3" target="_blank" class="btn btn-default">查看详情</a>
-                                            <c:if test="${item.tableCopyCopyCopy.tIfEOk==1}">
-                                                <a href="javascript:;" data-toggle="modal" data-target="#deny-alert"  class="btn btn-default" onclick="f2(${item.tableCopyCopyCopy.tId})" >驳回</a>
-                                                <a href="javascript:;" data-toggle="modal" data-target="#up-alert"  class="btn btn-default" onclick="f3(${item.tableCopyCopyCopy.tId})" >通过</a>
+                                            <a href="${pageContext.request.contextPath}/common/${item.tableCopy.tId}/statics2" target="_blank" class="btn btn-default">查看详情</a>
+                                            <c:if test="${item.tableCopy.tIfEOk==1}">
+                                                <a href="javascript:;" data-toggle="modal" data-target="#deny-alert"  class="btn btn-default" onclick="f2(${item.tableCopy.tId})" >驳回</a>
+                                                <a href="javascript:;" data-toggle="modal" data-target="#up-alert"  class="btn btn-default" onclick="f3(${item.tableCopy.tId})" >通过</a>
                                             </c:if>
                                            <%-- <a href="javascript:;" data-toggle="modal" data-target="#deny-alert"  class="btn btn-default" onclick="f2(${item.tId})" >驳回</a>--%>
                                         </td>
+                                        <td>
+                                            <c:if test="${item.tableCopy.tIfEOk==1}">
+                                                <input type="checkbox" class="table-checkbox" data-id="${item.tableCopy.tId}"/>
+                                            </c:if>
+                                        </td>
                                     </tr>
                                 </c:forEach>
-
 
                                 </tbody>
                             </table>
@@ -274,5 +273,25 @@
         $("#tDateD2").val($("#tDateD").val());
         document.getElementById('cancel_form').submit();
     }
+</script>
+
+<script>
+    $("#submit-all-id").on("click",function () {
+        var $table=$("table");
+        var idList=[];
+        $table.find(".table-checkbox").each(function () {
+            if($(this).prop("checked")===true){
+                idList.push($(this).attr("data-id"));
+            }
+        });
+        var idString=idList.join("-");
+        console.log(idString);
+        if(idString==''){
+            alert('请勾选以后操作');
+        }else{
+            var url = '${pageContext.request.contextPath}/r/'+idString+'/up_group3';
+            window.location.href=url;
+        }
+    });
 </script>
 

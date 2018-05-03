@@ -51,21 +51,14 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
-                <li ><a href="${pageContext.request.contextPath}/r/management"><span>单位管理</span></a></li>
-                <li ><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list"><span>汇总统计</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management"><span>省厅账号信息</span></a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/r/management2"><span>部属院校账号信息</span></a></li>
 
-
-                <li ><a href="${pageContext.request.contextPath}/r/req2"><span>部署院校账号申请</span></a></li>
-                <li class="active"><a href="${pageContext.request.contextPath}/r/management2"><span>部署院校账号信息</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部署院校表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list2"><span>部署院校汇总统计</span></a></li>
-
-
-                <li><a href="${pageContext.request.contextPath}/r/req3"><span>个体教师账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management3"><span>个体教师账号管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>省厅表格管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部属院校表格管理</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management3"><span>个体教师表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list3"><span>个体教师汇总统计</span></a></li>
+
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-list"><span>汇总统计</span></a></li>
 
                 <li><a href="${pageContext.request.contextPath}/r/psd"><span>修改密码</span></a></li>
             </ul>
@@ -82,18 +75,24 @@
                 <div class="col-md-12">
                     <div class="box">
                         <div class="box-header with-border">
-                            <form id="excel_upload" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/r/excel_upload">
-                                <%--<a href="javascript:;" class="btn btn-default btn-file" onclick="document.getElementById('excel_upload').submit();">
+                            <form id="excel_upload" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/r/3/excel_upload">
+                                <a href="javascript:;" class="btn btn-default btn-file" >
+                                    excel导入
+                                    <input type="file" id="file" name="file">
+                                </a>
+                                <a href="javascript:;" class="btn btn-default btn-file" onclick="document.getElementById('excel_upload').submit();">
                                     上传
-                                </a>--%>
-                                <a href="${pageContext.request.contextPath}/r/users1" class="btn btn-default btn-file" >
+                                </a>
+
+                                <a href="${pageContext.request.contextPath}/common/downloadFile/normal" class="btn btn-default btn-file" >
+                                    示范样例
+                                </a>
+
+                                <a href="${pageContext.request.contextPath}/r/3/users" class="btn btn-default btn-file" >
                                     导出通讯录
                                 </a>
                             </form>
-
                         </div>
-
-
                         <div class="box-body">
                             <table class="table table-bordered">
                                 <thead>
@@ -103,21 +102,19 @@
                                     <th>联系人</th>
                                     <th>联系人电话</th>
                                     <th>联系人邮箱</th>
-                                    <th>通讯地址</th>
                                     <th>密码重置</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${users}" var="user"    varStatus="id">
                                     <tr>
-                                        <td>${user.u1ScName}</td>
-                                        <td>sc${user.u1CodeQ}</td>
-                                        <td>${user.u1UName}</td>
-                                        <td>${user.u1Phone}</td>
-                                        <td>${user.u1Email}</td>
-                                        <td>${user.u1Address}</td>
+                                        <td>${user.uName}</td>
+                                        <td>${user.uV2Phone}</td>
+                                        <td>${user.uV2Name}</td>
+                                        <td>${user.uV2Phone}</td>
+                                        <td>${user.uV2Email}</td>
                                         <td>
-                                            <a data-toggle="modal" data-target="#confirm-alert" class="btn btn-default" href="${pageContext.request.contextPath}/r/${user.u1Id}/recode2">重置密码</a>
+                                            <a data-toggle="modal" data-target="#confirm-alert" class="btn btn-default" href="${pageContext.request.contextPath}/r/${user.uId}/recode2">重置密码</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

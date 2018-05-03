@@ -51,21 +51,14 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
-                <li class="active"><a href="${pageContext.request.contextPath}/r/management"><span>单位管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list"><span>汇总统计</span></a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/r/management"><span>省厅账号信息</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部属院校账号信息</span></a></li>
 
-
-                <li><a href="${pageContext.request.contextPath}/r/req2"><span>部署院校账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部署院校账号信息</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部署院校表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list2"><span>部署院校汇总统计</span></a></li>
-
-
-                <li><a href="${pageContext.request.contextPath}/r/req3"><span>个体教师账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management3"><span>个体教师账号管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>省厅表格管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部属院校表格管理</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management3"><span>个体教师表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list3"><span>个体教师汇总统计</span></a></li>
+
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-list"><span>汇总统计</span></a></li>
 
                 <li><a href="${pageContext.request.contextPath}/r/psd"><span>修改密码</span></a></li>
             </ul>
@@ -82,7 +75,7 @@
                 <div class="col-md-12">
                     <div class="box">
                         <div class="box-header with-border">
-                            <form id="excel_upload" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/r/excel_upload">
+                            <form id="excel_upload" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/r/2/excel_upload">
                                 <a href="javascript:;" class="btn btn-default btn-file" >
                                     excel导入
                                     <input type="file" id="file" name="file">
@@ -95,7 +88,7 @@
                                     示范样例
                                 </a>
 
-                                <a href="${pageContext.request.contextPath}/r/users" class="btn btn-default btn-file" >
+                                <a href="${pageContext.request.contextPath}/r/2/users" class="btn btn-default btn-file" >
                                     导出通讯录
                                 </a>
 
@@ -111,8 +104,8 @@
                                     <th>单位名称</th>
                                     <th>账号</th>
                                     <th>联系人姓名</th>
-                                    <th>电话</th>
-                                    <th>邮箱</th>
+                                    <th>联系人电话</th>
+                                    <th>联系人邮箱</th>
                                     <th>密码重置</th>
                                 </tr>
                                 </thead>
@@ -120,7 +113,7 @@
                                 <c:forEach items="${users}" var="user"    varStatus="id">
                                     <tr>
                                         <td>${user.uName}</td>
-                                        <td>${user.uCodeE}</td>
+                                        <td>${user.uV2Phone}</td>
                                         <td>${user.uV2Name}</td>
                                         <td>${user.uV2Phone}</td>
                                         <td>${user.uV2Email}</td>

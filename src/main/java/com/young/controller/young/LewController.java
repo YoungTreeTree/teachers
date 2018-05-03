@@ -203,39 +203,7 @@ public class LewController extends BaseController {
     }
 
 
-    @ResponseBody
-    @RequestMapping(value = "/{year}/downloadFile", method = RequestMethod.GET)
-    private void  downloadFile3(
-            @PathVariable("year") String year
-    ){
-        try {
-            User user = getUserSession();
-            ArrayList<TableCopy> tables=null;
-            if (year.equals("-1")){
-            }else{
-                tables = lewService.get_table_by_year_user(year,user);
-            }
-            //文件所在目录路径
-            String filePath = getHttpRequest().getSession().getServletContext().getRealPath(File.separator)+File.separator+
-                    "web"+File.separator+"file"+File.separator;
-            String fileName = year+"年"+user.getuName()+"省厅汇总表.xls";
-            String path =  FileUtil.creat_file_static2(year,tables,filePath,fileName);
-            File file = new File(path);
-            FileInputStream fileInputStream = new FileInputStream(file);
-            //设置Http响应头告诉浏览器下载这个附件
-            getHttpResponse().setHeader("Content-Disposition", "attachment;Filename=" + URLEncoder.encode(fileName, "UTF-8"));
-            OutputStream outputStream = getHttpResponse().getOutputStream();
-            byte[] bytes = new byte[2048];
-            int len = 0;
-            while ((len = fileInputStream.read(bytes))>0){
-                outputStream.write(bytes,0,len);
-            }
-            fileInputStream.close();
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
     @RequestMapping(value = "/psd", method = RequestMethod.GET)

@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav">
                     <li class="user user-menu">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="hidden-xs">${user.uCodeE} ${user.uCodeW} ${user.uCodeQ}</span>
+                            <span class="hidden-xs">${user.uV2Phone} ${user.uV2Name}</span>
                         </a>
                     </li>
                     <li class="user user-menu">
@@ -73,8 +73,7 @@
                                 <tr>
                                     <th>年份</th>
                                     <th>状态</th>
-                                    <th>单位审核</th>
-                                    <th>省厅审核</th>
+                                    <th>一级审核</th>
                                     <th>汉办审核</th>
                                     <th>详情</th>
                                 </tr>
@@ -99,37 +98,14 @@
                                             <c:if test="${item.tIfWOk==3}"> 被驳回 </c:if>
                                         </td>
                                         <td>
-                                            <c:if test="${item.tIfEOk==1}"> -- </c:if>
-                                            <c:if test="${item.tIfEOk==2}"> 通过 </c:if>
-                                            <c:if test="${item.tIfEOk==3}"> 被驳回 </c:if>
-                                        </td>
-                                        <td>
                                             <a href="${pageContext.request.contextPath}/teacher/${item.tId}/detail" target="_blank" class="btn btn-default">查看</a>
+                                            <a href="${pageContext.request.contextPath}/common/${item.tId}/statics" target="_blank" class="btn btn-default">打印</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
 
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="confirm-alert">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <p>确认重置密码为：123456?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary">确认</button>
                         </div>
                     </div>
                 </div>

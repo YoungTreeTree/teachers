@@ -52,21 +52,14 @@
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
-                <li ><a href="${pageContext.request.contextPath}/r/management"><span>单位管理</span></a></li>
-                <li ><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>表格管理</span></a></li>
-                <li class="active"><a href="${pageContext.request.contextPath}/r/-1/table-list"><span>汇总统计</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management"><span>省厅账号信息</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部属院校账号信息</span></a></li>
 
-
-                <li ><a href="${pageContext.request.contextPath}/r/req2"><span>部署院校账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management2"><span>部署院校账号信息</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部署院校表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list2"><span>部署院校汇总统计</span></a></li>
-
-
-                <li><a href="${pageContext.request.contextPath}/r/req3"><span>个体教师账号申请</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/management3"><span>个体教师账号管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management"><span>省厅表格管理</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management2"><span>部属院校表格管理</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/r/-1/-1/table-management3"><span>个体教师表格管理</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/r/-1/table-list3"><span>个体教师汇总统计</span></a></li>
+
+                <li class="active"><a href="${pageContext.request.contextPath}/r/-1/-1/table-list"><span>汇总统计</span></a></li>
 
                 <li><a href="${pageContext.request.contextPath}/r/psd"><span>修改密码</span></a></li>
             </ul>
@@ -85,9 +78,18 @@
                         <div class="box-header with-border">
                             <label class="control-label">年份</label>
                             <select class="form-control" id="year">
+                                <option value="-1">全部</option>
                                 <c:forEach items="${years}" var="year"    varStatus="id">
                                     <option value="${year.year}">${year.year}</option>
                                 </c:forEach>
+                            </select>
+
+                            <label class="control-label">类型</label>
+                            <select class="form-control" id="type">
+                                <option value="-1">全部</option>
+                                <option value="2">省厅</option>
+                                <option value="3">部属院校</option>
+                                <option value="4">无单位教师</option>
                             </select>
                             <button class="btn btn-primary pull-right" onclick="f2()" style="margin-right:10px;">导出Excel文件</button>
                             <button class="btn btn-primary pull-right" onclick="f()"  style="margin-right:10px;">统计</button>
@@ -98,6 +100,18 @@
                                 <h2>申请人信息汇总表（单位填写）</h2>
                             </div>
                             <table class="table table-bordered">
+
+                                <thead>
+                                <td colspan="2">单位名称</td>
+                                <td colspan="4">${user.uName}</td>
+                                <td colspan="2">联系人</td>
+                                <td colspan="2">${user.uV2Name}</td>
+                                <td colspan="2">联系电话</td>
+                                <td colspan="2">${user.uV2Phone}</td>
+                                <td colspan="1">联系邮箱</td>
+                                <td colspan="6">${user.uV2Email}</td>
+                                </thead>
+
                                 <thead>
                                 <td>序号</td>
                                 <td>教师姓名</td>
@@ -117,7 +131,6 @@
                                 <td>邮编</td>
                                 <td>是否提前离任</td>
                                 <td>国内单位审批意见</td>
-                                <td>教育厅审批意见</td>
                                 <td>汉办审批意见</td>
                                 <td>证书编号</td>
                                 <td>证书发放时间</td>
@@ -151,7 +164,6 @@
                                             </c:if>
                                         </td>
                                         <td>${t.tQNoReason}</td>
-                                        <td>${t.tWNoReason}</td>
                                         <td>${t.tENoReason}</td>
                                         <td>${t.tNumber}</td>
                                         <td>${t.tDateY}-${t.tDateM}-${t.tDateD}</td>
@@ -201,12 +213,23 @@
             o[i].selected =true;
         }
     }
+
+    var l = document.getElementById('type').options.length;
+    var o = document.getElementById('type').options;
+    for(i=0;i<Number(l);i++){
+        var aaa = o[i].value;
+        console.log(aaa);
+        if(aaa=="${type}"){
+            console.log(aaa);
+            o[i].selected =true;
+        }
+    }
     function f() {
-        var url = '${pageContext.request.contextPath}/r/'+document.getElementById('year').value+'/table-list';
+        var url = '${pageContext.request.contextPath}/r/'+document.getElementById('type').value+'/'+document.getElementById('year').value+'/table-list';
         window.location.href=url;
     }
     function f2() {
-        var url = '${pageContext.request.contextPath}/r/'+document.getElementById('year').value+'/downloadFile';
+        var url = '${pageContext.request.contextPath}/r/'+document.getElementById('type').value+'/'+document.getElementById('year').value+'/downloadFile';
         window.location.href=url;
     }
 </script>
