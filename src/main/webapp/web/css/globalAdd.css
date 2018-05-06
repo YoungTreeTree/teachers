@@ -9,7 +9,6 @@
 }
 .select-tag{
     position: absolute;
-    width: 30%;
     z-index: 10;
     display: inline-block;
     padding: 7px 10px 20px;
@@ -22,15 +21,19 @@
     font-size: 15px;
     color:#367fa9 ;
     text-align: center;
+    white-space: nowrap;
 }
 .select-tag:nth-child(1){
     left: 0;
+    width: 27%;
 }
 .select-tag:nth-child(2){
-    left: 35%;
+    left: 33%;
+    width: 35%;
 }
 .select-tag:nth-child(3){
-    margin-left: 70%;
+    margin-left: 73%;
+    width: 27%;
 }
 .select-tag:hover{
     background-color: #367fa9;

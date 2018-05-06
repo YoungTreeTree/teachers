@@ -66,6 +66,8 @@
                 <div class="col-xs-6">
                     <a href="${pageContext.request.contextPath}/common/register2" class="btn btn-primary btn-block btn-flat">部署院校教师注册</a>
                 </div>
+            </div>
+            <div class="row" style="margin-top:10px">
                 <div class="col-xs-6">
                     <a href="${pageContext.request.contextPath}/common/register3" class="btn btn-primary btn-block btn-flat">无单位教师注册</a>
                 </div>
