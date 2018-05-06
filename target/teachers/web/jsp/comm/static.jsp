@@ -215,7 +215,7 @@
                         </div>
                         <div class="box-footer with-border text-right">
                             <div class="btn-group">
-                                <a href="" class="btn btn-default" rel="external nofollow" onclick="f()">打印</a>
+                                <a href="${pageContext.request.contextPath}/common/${table.tId}/word" target="_blank" class="btn btn-default">导出word打印</a>
                             </div>
                         </div>
                     </div>

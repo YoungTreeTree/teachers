@@ -39,7 +39,7 @@
     </div>
     <div class="tag-row">
         <a href="${pageContext.request.contextPath}/teacher/login" class="select-tag active">教师登录</a>
-        <a href="${pageContext.request.contextPath}/b/login" class="select-tag">院校登录</a>
+        <a href="${pageContext.request.contextPath}/b/login" class="select-tag">省厅/院校登录</a>
         <a href="${pageContext.request.contextPath}/r/login" class="select-tag">汉办登录</a>
     </div>
     <div class="login-box-body" style="position: relative;margin-top: 60px;z-index: 100">
@@ -61,13 +61,13 @@
             </div>
             <div class="row" style="margin-top:10px">
                 <div class="col-xs-6">
-                    <a href="${pageContext.request.contextPath}/common/register1" class="btn btn-primary btn-block btn-flat">省厅教师</a>
+                    <a href="${pageContext.request.contextPath}/common/register1" class="btn btn-primary btn-block btn-flat">省厅教师注册</a>
                 </div>
                 <div class="col-xs-6">
-                    <a href="${pageContext.request.contextPath}/common/register2" class="btn btn-primary btn-block btn-flat">部署院校教师</a>
+                    <a href="${pageContext.request.contextPath}/common/register2" class="btn btn-primary btn-block btn-flat">部署院校教师注册</a>
                 </div>
                 <div class="col-xs-6">
-                    <a href="${pageContext.request.contextPath}/common/register3" class="btn btn-primary btn-block btn-flat">无单位教师</a>
+                    <a href="${pageContext.request.contextPath}/common/register3" class="btn btn-primary btn-block btn-flat">无单位教师注册</a>
                 </div>
             </div>
         </form>

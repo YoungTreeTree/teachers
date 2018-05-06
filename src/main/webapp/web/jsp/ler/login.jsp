@@ -39,7 +39,7 @@
     </div>
     <div class="tag-row">
         <a href="${pageContext.request.contextPath}/teacher/login" class="select-tag">教师登录</a>
-        <a href="${pageContext.request.contextPath}/b/login" class="select-tag">院校登录</a>
+        <a href="${pageContext.request.contextPath}/b/login" class="select-tag">省厅/院校登录</a>
         <a href="${pageContext.request.contextPath}/r/login" class="select-tag active">汉办登录</a>
     </div>
     <div class="login-box-body" style="position: relative;margin-top: 60px;z-index: 100">

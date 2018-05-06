@@ -99,7 +99,7 @@
                                         </td>
                                         <td>
                                             <a href="${pageContext.request.contextPath}/teacher/${item.tId}/detail" target="_blank" class="btn btn-default">查看</a>
-                                            <a href="${pageContext.request.contextPath}/common/${item.tId}/statics" target="_blank" class="btn btn-default">打印</a>
+                                            <a href="${pageContext.request.contextPath}/common/${item.tId}/word" target="_blank" class="btn btn-default">导出word打印</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

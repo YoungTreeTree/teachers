@@ -130,6 +130,7 @@
                                             <c:if test="${item.tableCopy.tIfEOk==3}"> 被驳回 </c:if></td>
                                         <td>
                                             <a href="${pageContext.request.contextPath}/common/${item.tableCopy.tId}/statics2" target="_blank" class="btn btn-default">查看详情</a>
+                                            <a href="${pageContext.request.contextPath}/common/${item.tableCopy.tId}/word" target="_blank" class="btn btn-default">导出word</a>
                                             <c:if test="${item.tableCopy.tIfEOk==1}">
                                                 <a href="javascript:;" data-toggle="modal" data-target="#deny-alert"  class="btn btn-default" onclick="f2(${item.tableCopy.tId})" >驳回</a>
                                                 <a href="javascript:;" data-toggle="modal" data-target="#up-alert"  class="btn btn-default" onclick="f3(${item.tableCopy.tId})" >通过</a>

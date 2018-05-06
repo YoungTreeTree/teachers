@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="teachers:war exploded">
-    <output-path>$PROJECT_DIR$/target/y</output-path>
+    <output-path>$PROJECT_DIR$/target/teachers</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -65,10 +65,11 @@
           <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.10-FINAL" />
           <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" />
           <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-scratchpad:3.9" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/y/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/teachers/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="teachers/web/Web" />
     </root>

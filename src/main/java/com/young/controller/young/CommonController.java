@@ -1,6 +1,7 @@
 package com.young.controller.young;
 
 
+import com.framework.util.WordPOI;
 import com.young.controller.base.BaseController;
 import com.young.entity.*;
 import com.young.json.BaseJson;
@@ -15,6 +16,8 @@ import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/common")
@@ -99,13 +102,80 @@ public class CommonController extends BaseController {
             @PathVariable("t_id") long t_id
     ) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        long user_id=1;
         TableCopy tableCopy = commService.get_table_by_id(t_id);
         String reason = "";
         modelAndView.getModel().put("table",tableCopy);
         modelAndView.setViewName("comm/static");
         return modelAndView;
     }
+
+    @RequestMapping(value = "{t_id}/word", method = RequestMethod.GET)
+    public void word(
+            @PathVariable("t_id") long t_id
+    ) throws Exception {
+        try {
+            TableCopy tableCopy = commService.get_table_by_id(t_id);
+            String basePath = getHttpRequest().getSession().getServletContext().getRealPath(File.separator)+File.separator+
+                    "web"+ File.separator+"file"+File.separator+"normal"+File.separator;
+            String filepathString = basePath+"modle.doc";
+            String destpathString = basePath+tableCopy.gettId()+".doc";
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("${name}",tableCopy.gettName());
+            map.put("${id}",tableCopy.gettIdCard());
+            map.put("${chinaQ}",tableCopy.gettChinaQ());
+            map.put("${chinaW}",tableCopy.gettChinaW());
+            map.put("${chinaE}",tableCopy.gettChinaE());
+            map.put("${wordQ}",tableCopy.gettWorldQ());
+            map.put("${wordW}",tableCopy.gettWorldW());
+            map.put("${wordE}",tableCopy.gettWorldE());
+            map.put("${wordQE}",tableCopy.gettWorldQE());
+            map.put("${wordWE}",tableCopy.gettWorldWE());
+            map.put("${wordEE}",tableCopy.gettWorldEE());
+            map.put("${startY}",tableCopy.gettStartY());
+            map.put("${startM}",tableCopy.gettStartM());
+            map.put("${startD}",tableCopy.gettStartD());
+            map.put("${endY}",tableCopy.gettEndY());
+            map.put("${endM}",tableCopy.gettEndM());
+            map.put("${endD}",tableCopy.gettEndD());
+            map.put("${phone}",tableCopy.gettPhone());
+            map.put("${mail}",tableCopy.gettMail());
+            map.put("${who}",tableCopy.gettWho());
+            map.put("${zuoji}",tableCopy.gettZuoji());
+            map.put("${address}",tableCopy.gettAddress());
+            map.put("${ems}",tableCopy.gettEms());
+            map.put("${goReason}",tableCopy.gettGoReason());
+            map.put("${qNoReason}",tableCopy.gettQNoReason());
+            map.put("${eNoReason}",tableCopy.gettENoReason());
+            map.put("${number}",tableCopy.gettNumber());
+            map.put("${dateY}",tableCopy.gettDateY());
+            map.put("${dateM}",tableCopy.gettDateM());
+            map.put("${dateD}",tableCopy.gettDateD());
+            map.keySet().forEach(s -> {
+                if (map.get(s)==null){
+                    map.replace(s," ");
+                }
+            });
+            System.out.println(WordPOI.replaceAndGenerateWord(filepathString,
+                    destpathString, map));
+            //文件所在目录路径
+            File file = new File(destpathString);
+            FileInputStream fileInputStream = new FileInputStream(file);
+            //设置Http响应头告诉浏览器下载这个附件
+            getHttpResponse().setHeader("Content-Disposition", "attachment;Filename=" + URLEncoder.encode(tableCopy.gettId()+".doc", "UTF-8"));
+            OutputStream outputStream = getHttpResponse().getOutputStream();
+            byte[] bytes = new byte[2048];
+            int len = 0;
+            while ((len = fileInputStream.read(bytes))>0){
+                outputStream.write(bytes,0,len);
+            }
+            fileInputStream.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     @RequestMapping(value = "{t_id}/statics3", method = RequestMethod.GET)
     public ModelAndView statics3(
